@@ -17,6 +17,10 @@ const Login =(props) =>{
             setAlert(error,"danger");
             clearErrors();
         }
+        if(error === "server error"){
+            setAlert(error,"danger");
+            clearErrors();
+        }
         //eslint-disable-next-line
     },[error,isAuthenticated,props.history]);
 
@@ -42,6 +46,14 @@ const Login =(props) =>{
        });
    }
   }
+  const showIcon = () =>{
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
 
     return (
       <div className = "form-container">
@@ -56,7 +68,8 @@ const Login =(props) =>{
               </div>   
               <div className="form-group">
                   <label htmlFor="password">Password</label>
-                  <input type="password" name="password" value={password} onChange = {onChange} />
+                  <input type="password" name="password" id="myInput" value={password} onChange = {onChange} />
+                  <input type="checkbox" onClick={showIcon} /> Show Password
               </div>  
              
               <input type="submit" value = "Login" className="btn btn-primary btn-block" /> 

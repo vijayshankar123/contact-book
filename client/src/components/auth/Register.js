@@ -47,6 +47,15 @@ const Register =(props) =>{
   }
 }
 
+  const showIcon = () =>{
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+  
     return (
       <div className = "form-container">
           <h1>
@@ -61,9 +70,12 @@ const Register =(props) =>{
                   <label htmlFor="email">Email Address</label>
                   <input type="text" name="email" value={email} onChange = {onChange} required/>
               </div>   
-              <div className="form-group">
+              <div className="form-group input-icons">
                   <label htmlFor="password">Password</label>
-                  <input type="password" name="password" value={password} onChange = {onChange} minLength ="6" required/>
+                <div className="input-icons">  
+                  <input className="input-field" id="myInput" type="password" name="password" value={password} onChange = {onChange} minLength ="6" required /> 
+                  <input type="checkbox" onClick={showIcon} /> Show Password
+                </div>             
               </div>  
               <div className="form-group">
                   <label htmlFor="password2">Confirm Password</label>
